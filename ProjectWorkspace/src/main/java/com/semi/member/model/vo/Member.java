@@ -1,5 +1,10 @@
 package com.semi.member.model.vo;
 
-public class Member {
+import lombok.Builder;
+import lombok.Data;
 
+@Data
+@Builder
+public class Member {
+	
 }
