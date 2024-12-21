@@ -30,11 +30,13 @@ public class AdminLoginController extends HttpServlet {
 		AdminService service = new AdminService();
 		Admin a = service.login(adminId, adminPwd);
 		
+		HttpSession session = request.getSession();
+
 		if(a == null) {
+			session.setAttribute("errorMsg", "아이디 혹은 비밀번호를 확인해주세요");
 			
+			response.sendRedirect(request.getContextPath()+"/admin");
 		} else {
-			HttpSession session = request.getSession();
-			
 			session.setAttribute("loginAdmin", a);
 			
 			response.sendRedirect(request.getContextPath()+"/admin/main");

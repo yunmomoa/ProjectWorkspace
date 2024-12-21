@@ -30,12 +30,14 @@ public class LoginController extends HttpServlet {
 		MemberService service = new MemberService();
 		Member m = service.login(memberId, memberPwd);
 		
+		HttpSession session = request.getSession();
+		
 		if(m == null) {
+			session.setAttribute("errorMsg", "아이디 혹은 비밀번호를 확인해주세요");
 			
+			response.sendRedirect(request.getContextPath()+"/member/login");
 		} else {
-			HttpSession session = request.getSession();
-			
-			session.setAttribute("loginUser", m);
+			session.setAttribute("loginMember", m);
 			
 			response.sendRedirect(request.getContextPath());
 		}

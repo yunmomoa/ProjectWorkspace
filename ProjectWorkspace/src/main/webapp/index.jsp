@@ -7,6 +7,6 @@
 <title>Main Page</title>
 </head>
 <body>
-	<%@ include file="views/common/main.jsp"%> 
+	<%@ include  file="views/common/main.jsp" %>
 </body>
 </html>
