@@ -92,12 +92,8 @@ body {
 	box-sizing: border-box;
 }
 
-.gender-group, .team-group {
+.team-group {
 	margin-top: 20px;
-}
-
-.gender-group label {
-	font-weight: bold;
 }
 
 .team-group {
@@ -141,7 +137,6 @@ span {
 	margin: 0;
 	font-size: 16px; /* @ 기호 크기 */
 }
-
 </style>
 </head>
 <body>
@@ -213,14 +208,6 @@ span {
                 <div class="form-group">
                     <label for="ssn">주민등록번호</label>
                     <input type="text" id="ssn" name="ssn" maxlength="14" placeholder=" -포함해서 작성하세요">
-                </div>
-                
-                <div class="gender-group">
-                    <label>성별</label>
-                    <input type="radio" id="male" name="gender" value="M">
-                    <label for="male">남성</label>
-                    <input type="radio" id="female" name="gender" value="F">
-                    <label for="female">여성</label>
                 </div>
             </div>
             <h3 class="team-header">내 구단 선택</h3>
