@@ -8,4 +8,24 @@
     		AND MEMBER_PWD = ?
     		AND MEMBER_STATUS = 'Y'
 	</entry>
+	<entry key="insert">
+		INSERT INTO MEMBER VALUES 
+		(SEQ_MNO.NEXTVAL,
+		 	? ,
+		 	? ,
+		 	? ,
+		 	? ,
+		 	? ,
+		 	? ,
+		 	? ,
+		 	? ,
+		 	? ,
+		 	'970221',
+		 	DEFAULT ,
+		 	'1',
+		 	'',
+		 	DEFAULT
+		 )
+	</entry>
+	
 </properties>
