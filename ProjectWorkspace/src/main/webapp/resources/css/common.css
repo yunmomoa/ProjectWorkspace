@@ -1,0 +1,165 @@
+
+/*
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .login-area{
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    /* 버튼 스타일 */
+    /* 로그인 버튼 스타일 */ /* 
+    .login-btn .signup-btn{
+        color: gray;
+    }
+    .login-btn:hover, .signup-btn:hover {
+        background-color:rgb(227, 220, 138);
+        transform: scale(1.05); /* 약간 확대 */
+ /*       color: white;
+    }
+    */
+/*
+    .nav-area{
+        background-color: white;
+        display: flex;
+
+    }
+
+    .menu{
+        flex-basis: 150px;
+        height: 50px;
+    }
+
+    .menu a{
+        color: olivedrab;
+        font-weight: bold;
+        line-height: 50px;
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    .menu a:hover{
+        background-color: rgb(227, 220, 138);
+    }
+*/
+/* 네비게이션 바 전체 스타일 */
+.nav-area {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+    margin-top: 20px; /* 로그인 영역과 네비게이션 바 사이 간격 추가 */
+}
+
+/* 카테고리 메뉴 항목 */
+.menu {
+    position: relative;
+    margin: 0 55px; /* 카테고리 간 간격 조정 */
+}
+
+/* 메뉴 텍스트 스타일 */
+.menu a {
+    color: olivedrab;
+    font-weight: bold;
+    line-height: 50px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* 로고 이미지 스타일 (HOME 버튼) */
+.menu img {
+    height: 40px;
+    vertical-align: middle;
+}
+
+/* 서브메뉴 기본 숨김 */
+.submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 150px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+/* 서브메뉴 항목 */
+.submenu li {
+    height: 40px;
+    text-align: center;
+}
+
+.submenu li a {
+    display: block;
+    line-height: 40px;
+    color: gray;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.submenu li a:hover {
+    background-color: rgb(227, 220, 138);
+    color: white;
+}
+
+/* 부모 메뉴에 마우스 올릴 때 서브메뉴 표시 */
+.menu:hover .submenu {
+    display: block;
+}
+
+/* 로그인 및 회원가입 버튼 스타일 */
+.login-area {
+    margin-left: auto;
+    display: flex;
+    gap: 10px; /* 버튼 간 간격 추가 */
+}
+
+.login-btn, .signup-btn {
+    background-color: olivedrab;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.login-btn:hover, .signup-btn:hover {
+    background-color: rgb(227, 220, 138);
+    transform: scale(1.05);
+    color: white;
+}
+
+/* 전체 네비게이션 위치를 아래로 내리기 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 로그인 영역과 네비게이션 바 사이를 위한 공백 추가 */
+.nav-area {
+    margin-top: 20px;
+}
