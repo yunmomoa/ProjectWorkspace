@@ -52,6 +52,7 @@ body {
 .login-iogo img{
 	width: 25px;
     height: 25px;
+    margin: 0px 10px 0px;
 }
 
 /* 아이콘 */
@@ -122,16 +123,28 @@ body {
     text-align: left;
 }
 </style>
+ <script>
+   		window.onload = function() {
+   			
+		<% 
+			String errorMsg = (String)session.getAttribute("errorMsg"); 
+	   		if(errorMsg != null) {
+		%>   		
+   			alert('<%= errorMsg %>');
+   		<%
+   				session.removeAttribute("errorMsg");
+	   		}
+		%>
+   		}
+   	</script>
 </head>
 <body>
     <div class="container">
         <div class="title">
-            <div class="title">
-            	<div class="login-iogo">
-	                <img src="<%= contextPath %>/resources/images/mainlogo.png" alt="logo">
-            	</div>
-	            <div>관리자 시스템 로그인</div>
+            <div class="login-iogo">
+	        	<img src="<%= contextPath %>/resources/images/mainlogo.png" alt="logo">
             </div>
+	        <div>관리자 시스템 로그인</div>
         </div>
         <div class="login-box">
             <div class="login-icon">

@@ -20,4 +20,19 @@ public class MemberService {
 		
 		return m;
 	}
+
+	public int enroll(Member m) {
+Connection conn = getConnection();
+		
+		int result = dao.enroll(conn, m);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
 }

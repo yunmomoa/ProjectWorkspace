@@ -32,55 +32,53 @@ public class InsertController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
-		if (ServletFileUpload.isMultipartContent(request)) {
-		    long maxSize = 1024 * 1024 * 10; // 파일 크기 제한 10MB
-		    String filePath = request.getServletContext().getRealPath("/upload/notice/");
 
-		    MultipartRequest multiRequest = new MultipartRequest(request, filePath, maxSize, "UTF-8", new FileRenamePolicy());
+        if (ServletFileUpload.isMultipartContent(request)) {
+            long maxSize = 1024 * 1024 * 10; // 파일 크기 제한 10MB
+            String filePath = request.getServletContext().getRealPath("/upload/notice/");
 
-		    // notice 테이블에 추가할 데이터
-		    String noticeLevelParam = multiRequest.getParameter("noticeLevel");
-		    int noticeLevel = noticeLevelParam != null ? Integer.parseInt(noticeLevelParam) : 0; // 기본값 처리
-		    String noticeTitle = multiRequest.getParameter("noticeTitle");
-		    String noticeContent = multiRequest.getParameter("noticeContent");
-		    int adminNo = Integer.parseInt(multiRequest.getParameter("adminNo"));
-		    String noticeStatus = multiRequest.getParameter("noticeStatus");
+            
+            MultipartRequest multiRequest = new MultipartRequest(request, filePath, maxSize, "UTF-8", new FileRenamePolicy());
+            
+            //notice 테이블에 추가할 데이터
+            int noticeLevel = Integer.parseInt(multiRequest.getParameter("noticeLevel"));
+            String noticeTitle = multiRequest.getParameter("noticeTitle");
+            String noticeContent = multiRequest.getParameter("noticeContent");
+            int adminNo = Integer.parseInt(multiRequest.getParameter("adminNo"));
+          
+            Notice n = Notice.builder()
+                 .noticeTitle(noticeTitle)
+                .noticeContent(noticeContent)
+                .adminNo(adminNo)
+                .noticeLevel(noticeLevel)
+                .build();
+            
+            // attachment 테이블에 추가할 데이터
+            Attachment at = null;
+            if (multiRequest.getOriginalFileName("upfile") != null) {
+                at = new Attachment();
+                at.setOriginName(multiRequest.getOriginalFileName("upfile"));
+                at.setChangeName(multiRequest.getFilesystemName("upfile"));
+                at.setFilePath("/upload/notice");
+            }
 
-		    Notice n = Notice.builder()
-		            .noticeTitle(noticeTitle)
-		            .noticeContent(noticeContent)
-		            .adminNo(adminNo)
-		            .noticeLevel(noticeLevel)
-		            .noticeStatus(noticeStatus)
-		            .build();
+            int result = new NoticeService().insertNotice(n, at);
 
-		    // attachment 테이블에 추가할 데이터
-		    Attachment at = null;
-		    if (multiRequest.getOriginalFileName("upfile") != null) {
-		        at = new Attachment();
-		        at.setOriginName(multiRequest.getOriginalFileName("upfile"));
-		        at.setChangeName(multiRequest.getFilesystemName("upfile"));
-		        at.setFilePath("/upload/notice");
-		    }
-
-		    int result = new NoticeService().insertNotice(n, at);
-
-		    if (result > 0) {
-		        session.setAttribute("alertMsg", "공지사항 등록 성공");
-		        response.sendRedirect(request.getContextPath() + "/admin/notice/list");
-		    } else {
-		        if (at != null) {
-		            new File(filePath + at.getChangeName()).delete();
-		        }
-
-		        request.setAttribute("errorMsg", "공지사항 등록에 실패하였습니다.");
-		        response.sendRedirect(request.getContextPath() + "/notice/insert");
-		    }
-
-		} else {
-		    request.setAttribute("errorMsg", "인코딩 타입이 일치하지 않습니다.");
-		    response.sendRedirect(request.getContextPath() + "/notice/insert");
-		}
-
+            if (result > 0) {
+                session.setAttribute("alertMsg", "공지사항 등록 성공");
+                response.sendRedirect(request.getContextPath() + "/notice/list");
+            } else {
+                if (at != null) {
+                    new File(filePath + at.getChangeName()).delete();
+                }
+                
+                request.setAttribute("errorMsg", "공지사항 등록에 실패하였습니다.");
+                response.sendRedirect(request.getContextPath()+"/notice/insert");
+            }
+            
+        	} else {
+            request.setAttribute("errorMsg", "인코딩 타입이 일치하지 않습니다.");
+            response.sendRedirect(request.getContextPath()+"/notice/insert");
+        }
     }
 }
