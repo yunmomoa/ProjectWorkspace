@@ -69,8 +69,8 @@
 <body>
     <% 
         String contextPath = request.getContextPath();
-        String userSelection = request.getParameter("noticeLevel");
-        String DEFAULT = request.getParameter("noticeStatus") != null ? request.getParameter("noticeStatus") : "Y";
+        /* String userSelection = request.getParameter("noticeLevel");
+         String DEFAULT = request.getParameter("noticeStatus") != null ? request.getParameter("noticeStatus") : "Y"; */
     %>
 
     <div class="container">
