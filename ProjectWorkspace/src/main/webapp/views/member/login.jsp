@@ -120,6 +120,20 @@
             cursor: pointer;
         }
     </style>
+    <script>
+   		window.onload = function() {
+   			
+		<% 
+			String errorMsg = (String)session.getAttribute("errorMsg"); 
+	   		if(errorMsg != null) {
+		%>   		
+   			alert('<%= errorMsg %>');
+   		<%
+   				session.removeAttribute("errorMsg");
+	   		}
+		%>
+   		}
+   	</script>
 </head>
 <body>
 	<div id="container">

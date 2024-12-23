@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertNotice">
+    INSERT INTO NOTICE
+    VALUES (SEQ_NOTICE_NO.NEXTVAL, ?, ?, DEFAULT, ?, DEFAULT, ?,DEFAULT)
+	</entry>
+	
+	<entry key="insertAttachment">
+		INSERT INTO ATTACHMENT
+		VALUES(SEQ_FNO.NEXTVAL, SEQ_BNO.CURRVAL, ? , ?, ?, DEFAULT, '', DEFAULT )
+	</entry>
+
+	
+	<entry key="selectList">
+		SELECT *
+		FROM NOTICE
+		JOIN ADMIN USING (ADMIN_NO)
+		ORDER BY NOTICE_NO DESC
+	</entry>
+</properties>

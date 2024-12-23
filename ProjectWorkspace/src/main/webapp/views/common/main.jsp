@@ -4,7 +4,7 @@
 <%
 	String contextPath = request.getContextPath(); //main.jsp
 
-	Member loginUser = (Member)session.getAttribute("loginUser");
+	Member loginMember = (Member)session.getAttribute("loginMember");
 %>
 <!DOCTYPE html>
 <html>
@@ -27,10 +27,9 @@
             margin-left: 7px
         }
     </style>
-
 </head>
 <body>
-	<%if(loginUser == null) { %>
+	<%if(loginMember == null) { %>
 	<div class="header1">
 		<a href="<%= contextPath %>/member/login" class='log-info' style="text-decoration: none;">로그인</a>
         <input type="button" class='log-info' value="회원가입" onclick="moveToEnroll()">
