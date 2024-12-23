@@ -32,6 +32,7 @@ public class InsertController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
+
         if (ServletFileUpload.isMultipartContent(request)) {
             long maxSize = 1024 * 1024 * 10; // 파일 크기 제한 10MB
             String filePath = request.getServletContext().getRealPath("/upload/notice/");
