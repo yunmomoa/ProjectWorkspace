@@ -7,6 +7,7 @@ import com.semi.common.model.vo.Attachment;
 import static com.semi.common.template.JDBCTemplate.*;
 
 import com.semi.notice.model.dao.NoticeDao;
+
 import com.semi.notice.model.vo.Notice;
 
 public class NoticeService {
@@ -41,4 +42,8 @@ public class NoticeService {
 		
 		return list;
 	}
+
+//	public NoticeDTO selectNotice(int noticeNo) {
+//		return null;
+//	}
 }

@@ -62,31 +62,4 @@ public class MemberDao {
 		}
 		return m;
 	}
-
-	public int enroll(Connection conn, Member m) {
-		int updateCount = 0;
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("insert");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, m.getTeamNo());
-			pstmt.setString(2, m.getMemberId());
-			pstmt.setString(3, m.getMemberName());
-			pstmt.setString(4, m.getMemberPwd());
-			pstmt.setString(5, m.getEmail());
-			pstmt.setString(6, m.getPhone());
-			pstmt.setString(7, m.getNickName());
-			pstmt.setString(8, m.getGender());
-			pstmt.setString(9, m.getSsn());
-			
-			updateCount = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}
-		
-		return updateCount;
-	}
 }

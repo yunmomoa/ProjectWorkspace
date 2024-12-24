@@ -31,7 +31,6 @@
 <body>
 	<% if(loginAdmin != null) { %>		
 		<div class="header1">
-			<a href="<%= contextPath %>/admin/notice/list" class='log-info' style="text-decoration: none;">공지사항</a>
         	<a href="<%= contextPath %>/admin/logout" class='log-info' style="text-decoration: none;">로그아웃</a>
 	    </div>
 	<% } %>

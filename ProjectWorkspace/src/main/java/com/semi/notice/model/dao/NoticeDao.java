@@ -39,6 +39,7 @@ public class NoticeDao {
 			pstmt.setString(2, n.getNoticeContent());
 			pstmt.setInt(3, n.getNoticeLevel());
 			pstmt.setInt(4, n.getAdminNo());
+			pstmt.setString(5, n.getNoticeStatus());
 			
 			updateCount = pstmt.executeUpdate();
 			

@@ -3,7 +3,7 @@
 <properties>
 	<entry key="insertNotice">
     INSERT INTO NOTICE
-    VALUES (SEQ_NOTICE_NO.NEXTVAL, ?, ?, DEFAULT, ?, DEFAULT, ?,DEFAULT)
+    VALUES (SEQ_NOTICE_NO.NEXTVAL, ?, ?, DEFAULT, ?, DEFAULT, ?,?)
 	</entry>
 	
 	<entry key="insertAttachment">
