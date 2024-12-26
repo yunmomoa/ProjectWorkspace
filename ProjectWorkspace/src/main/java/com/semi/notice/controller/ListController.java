@@ -25,8 +25,6 @@ public class ListController extends HttpServlet {
 		
 		request.setAttribute("list", list);
 		
-		// 확인용
-		//System.out.println(list);
 		
 		request.getRequestDispatcher("/views/notice/list.jsp").forward(request, response);
 	}

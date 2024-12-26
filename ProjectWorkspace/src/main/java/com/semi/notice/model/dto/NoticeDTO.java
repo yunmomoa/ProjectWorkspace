@@ -1,7 +1,7 @@
 package com.semi.notice.model.dto;
 
+import com.semi.admin.model.vo.Admin;
 import com.semi.common.model.vo.Attachment;
-import com.semi.member.model.vo.Member;
 import com.semi.notice.model.vo.Notice;
 
 import lombok.AllArgsConstructor;
@@ -15,7 +15,9 @@ import lombok.NoArgsConstructor;
 @Data
 public class NoticeDTO {
 	private Notice n;
-	private Member m;
+	private Admin ad;
 	private Attachment at;
 	
 }
+
+

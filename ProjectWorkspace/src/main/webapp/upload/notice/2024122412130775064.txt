@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nav_component</title>
+    <style>
+        div , li, ul{
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
+        ul {
+            list-style-type: none;
+            padding:0;
+        }
+
+        #nav{
+            width: 1138px;
+            display: flex;
+            height: 50px;
+        }
+        #nav > li{
+            flex : 0 1 150px;
+            /*     팽창, 수축, 점유율 */
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+        }
+
+        #nav > li:hover{
+            background-color: #455ba8;
+            color: white;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <ul id="nav"> 
+        <li>공지사항</li>
+        <li>자유 게시판</li>
+        <li>질문 게시판</li>
+        <li>FAQ</li>
+        <li>1:1문의</li>
+    </ul>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+네비 css
+
+
+ul {
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
+
+#nav{
+    width: 100%;
+    display: flex;
+    height: 4%;
+    border-bottom : 2px solid black;
+}
+#nav > li{
+    flex : 0 1 150px;
+    /*     팽창, 수축, 점유율 */
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+}
+
+#nav > li:hover{
+    background-color: #455ba8;
+    color: white;
+    border-radius: 5px;
+}

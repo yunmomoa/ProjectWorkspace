@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>공지사항 작성</title>
 <style>
@@ -15,7 +16,7 @@
     }
 
     .container {
-        max-width: 800px;
+        max-width: 900px;
         margin: 0 auto;
         background-color: #fff;
         padding: 20px;
@@ -137,7 +138,7 @@
             <!-- 첨부파일 -->
             <div class="form-group">
                 <label for="noticeFile">첨부파일</label>
-                <input type="file" name="noticeFile" id="noticeFile">
+                <input type="file" name="upfile" id="upfile">
             </div>
 
             <!-- 등록 버튼 -->

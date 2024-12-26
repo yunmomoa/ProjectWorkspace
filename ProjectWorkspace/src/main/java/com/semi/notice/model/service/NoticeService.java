@@ -7,7 +7,7 @@ import com.semi.common.model.vo.Attachment;
 import static com.semi.common.template.JDBCTemplate.*;
 
 import com.semi.notice.model.dao.NoticeDao;
-
+import com.semi.notice.model.dto.NoticeDTO;
 import com.semi.notice.model.vo.Notice;
 
 public class NoticeService {
@@ -43,7 +43,15 @@ public class NoticeService {
 		return list;
 	}
 
-//	public NoticeDTO selectNotice(int noticeNo) {
-//		return null;
-//	}
+	public NoticeDTO selectNotice(int noticeNo) {
+		Connection conn = getConnection();
+		
+		NoticeDTO n = NoticeDao.selectNotice(conn, noticeNo);
+		
+		close(conn);
+		
+		return n;
+	
+	}
+
 }

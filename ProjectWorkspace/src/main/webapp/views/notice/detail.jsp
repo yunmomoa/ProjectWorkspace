@@ -1,11 +1,24 @@
+<%@page import="com.semi.common.model.vo.Attachment"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.List, com.semi.notice.model.vo.Notice" %>
+<%@ page import="java.util.List, com.semi.notice.model.vo.*, com.semi.notice.model.dto.NoticeDTO, com.semi.common.model.vo.Attachment" %>
+<%
+	NoticeDTO n = (NoticeDTO)request.getAttribute("n");
+	Notice notice = n.getN();
+	Attachment at = n.getAt();
+	String contextPath = request.getContextPath();
+%>
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <meta charset="UTF-8">
-<title>공지사항 상세보기</title>
+<title >공지사항 상세보기</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -15,14 +28,14 @@
     }
 
     .container {
-        max-width: 800px;
+        max-width: 900px;
         margin: 0 auto;
         padding: 20px;
         border-radius: 8px;
     }
 
     h2 {
-        text-align: center;
+        text-align: left;
         margin-bottom: 20px;
         font-weight: bold;
     }
@@ -36,13 +49,13 @@
 
     th, td {
         border: 1px solid #000;
-        padding: 10px;
-        text-align: center;
+        padding: 15px;
     }
 
     th {
         background-color: #e6e6fa; /* 연한 하늘색 */
         font-weight: bold;
+        width: 25%; /* 너비 조정 */
     }
 
     .btn {
@@ -66,10 +79,9 @@
 </style>
 </head>
 <body>
-    <% 
-        String contextPath = request.getContextPath();
-        Notice notice = (Notice) request.getAttribute("notice");
-    %>
+   
+
+
 
     <div class="container">
         <h2>공지사항 상세보기</h2>
@@ -86,21 +98,35 @@
             </tr>
             <tr>
                 <th>내용</th>
-                <td colspan="3" style="text-align: left;"><%= notice.getNoticeContent() %></td>
+                <td colspan="3" style="text-align: left; height: 300px;"><%= notice.getNoticeContent() %></td>
             </tr>
             <tr>
                 <th>첨부파일</th>
                 <td colspan="3">
-                    <%-- <% if (notice.getNoticeFile() != null && !notice.getNoticeFile().isEmpty()) { %>
-                        <a href="<%= contextPath %>/upload/<%= notice.getNoticeFile() %>" download><%= notice.getNoticeFile() %></a>
-                    <% } else { %> --%>
-                   <%--      첨부파일 없음
-                    <% } %> --%>
+                    <% 
+                        // Attachment at = (Attachment) request.getAttribute("at"); 
+                        if (at.getOriginName() == null) { 
+                    %>
+                        첨부파일 없음
+                    <% 
+                        } else { 
+                    %> 
+                    
+                    <c:if test="${n.at != null}">
+					    <a href="${pageContext.request.contextPath}/upload/notice/${n.at.changeName}" 
+					       download="${n.at.originName}">
+					        ${n.at.originName}
+   						 </a>
+					</c:if>
+                      <%--   <a href="<%=request.getContextPath()+at.getFilePath()+at.getChangeName()%>" download="<%=at.getOriginName() %>">
+                            <%= at.getOriginName() %>
+                        </a> --%>
+                    <% } %>
                 </td>
             </tr>
         </table>
 
-        <%-- <a href="<%= contextPath %>/notice/list" class="btn">목록으로</a> --%>
+        <a href="<%= contextPath %>/admin/notice/list" class="btn">목록으로</a>
     </div>
 </body>
 </html>
