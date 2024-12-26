@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>공지관리</title>
 <style>
-    
     h2 {
         font-weight: bold;
         margin: 0 100px 30px;
@@ -39,17 +39,15 @@
         border: 1px solid rgb(200, 200, 200); /* 선 색상  */
     }
 
-   
-
-    tbody tr{
+    tbody tr {
         background-color: rgb(255, 255, 255); 
+        cursor: pointer; /* 클릭 가능 표시 */
     }
 
     tbody tr:hover {
         background-color: rgb(245, 245, 255); 
     }
 
-   
     input[type="button"] {
         background-color: rgb(100, 149, 237); 
         color: white;
@@ -63,6 +61,12 @@
         background-color: rgb(72, 118, 230); 
     }
 </style>
+<script>
+    function redirectToDetail(noticeNo) {
+        const contextPath = '<%= request.getContextPath() %>';
+        window.location.href = contextPath + '/admin/notice/detail?noticeNo=' + noticeNo;
+    }
+</script>
 </head>
 <body>
     <h2>공지관리</h2>
@@ -75,12 +79,13 @@
             </select>
             <label for="title">* 제목</label>
             <input type="text" name="title" id="title">
-        <input type="button" value="조회">
+            <input type="button" value="조회">
         </div>
     </div>
     <br>
     <div style="display: flex; justify-content: flex-end; margin: 0 100px;">
-        <input type="button" value="공지글 등록">
+        <input type="button" value="공지글 등록" 
+       onclick="location.href='<%= request.getContextPath() %>/admin/notice/insert'">
     </div>
     <div id="notice-list" style="margin: 0 100px;">
         <table>
@@ -99,11 +104,11 @@
             <tbody>
                 <% List<Notice> list = (List<Notice>) request.getAttribute("list"); %>
                 <% for(Notice n : list) { %>
-                <tr>
+                <tr onclick="redirectToDetail(<%= n.getNoticeNo() %>)">
                     <td><%= n.getNoticeNo() %></td>
-                    <td><%= n.getNoticeLevel() == 1 ? "증요공지" : "일반공지"%></td>
+                    <td><%= n.getNoticeLevel() == 1 ? "중요공지" : "일반공지" %></td>
                     <td><%= n.getNoticeTitle() %></td>
-                    <td><%= n.getNoticeStatus().equals("Y") ? "공개" : "비공개"%></td>
+                    <td><%= n.getNoticeStatus().equals("Y") ? "공개" : "비공개" %></td>
                     <td><%= n.getCreateDate() %></td>
                     <td><%= n.getAdminNo() %></td>
                     <td><%= n.getNoticeCount() %></td>
@@ -112,6 +117,17 @@
                 <% } %>
             </tbody>
         </table>
+        
+        <script>
+    $(function () {
+        // 공지사항 목록의 행을 클릭했을 때 상세 페이지로 이동
+        $("#notice-list>table>tbody>tr").click(function () {
+            const noticeNo = $(this).children().eq(0).text(); // 첫 번째 열의 게시글 번호 가져오기
+            location.assign("<%= request.getContextPath() %>/admin/notice/detail?noticeNo=" + noticeNo);
+        });
+    });
+</script>
+        
     </div>
 </body>
 </html>
