@@ -1,0 +1,194 @@
+@charset "UTF-8";
+
+
+
+
+.enrollcontainer {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	display: flex;
+	max-width: 1080px; /* 최대 너비를 제한 */
+	margin: 0 auto; /* 화면 가운데 정렬 */
+	gap: 30px;
+}
+/* 사이드바 스타일 */
+
+
+/* .sidebar {
+    
+    left:10; 화면의 가장 왼쪽에 붙이기
+    top: 100;
+    width: 200px; 너비 조정
+    height: 100vh; 화면 전체 높이
+    background-color: #78A778;; 배경색 (필요시 변경 가능)
+    border-right: 1px solid #ddd; 오른쪽 경계선
+    box-sizing: border-box;
+    padding: 20px; 내부 여백
+} */
+/* 메인 콘텐츠 스타일 */
+.content {
+	background-color: #fff;
+	flex: 1;
+	padding: 15px; /* 여백 줄임 */
+}
+
+.sidebar h2 {
+	font-size: 24px;
+}
+
+.sidebar ul {
+	list-style: none;
+	padding: 0;
+}
+
+.sidebar li {
+	margin: 15px 0;
+}
+/* 메인 콘텐츠 스타일 */
+.content {
+	background-color: #fff;
+	flex: 1;
+	padding: 20px;
+}
+
+.profile-section {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.profile-section img {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 1px solid #ccc;
+}
+
+.profile-section button {
+	margin: 5px;
+	padding: 5px 10px;
+}
+
+.form-section {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 40px;
+}
+
+.form-group {
+	flex: 1 1 calc(50% - 20px);
+	margin-bottom: 15px;
+}
+
+.form-group label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.form-group input, .form-group select {
+	width: 332px;
+	padding: 8px;
+	box-sizing: border-box;
+}
+
+.team-group {
+	margin-top: 20px;
+	width:750px
+}
+
+.team-group {
+	border: 1px solid #ccc;
+	padding: 10px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.team-group label {
+	margin-right: 10px;
+}
+
+.update-button {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.update-button button {
+	background-color: #78A778;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	margin:5px;
+	 border-radius: 3px;
+}
+
+#custom-domain {
+	width: 150px; /* 도메인 입력 필드 너비 */
+	padding: 8px;
+	box-sizing: border-box;
+	margin-left: 177px;
+}
+
+#email, #email-domain, #custom-domain {
+	width: 150px; /* 너비를 조정 */
+	padding: 8px;
+	box-sizing: border-box;
+}
+
+span {
+	margin: 0;
+	font-size: 16px; /* @ 기호 크기 */
+}
+
+.form-group {
+    position: relative;
+}
+
+#memberId {
+    width: 332px; /* 입력란 가로 길이를 부모에 맞춤 */
+    padding-right: 100px; /* 버튼 공간 확보 */
+    box-sizing: border-box;
+}
+
+
+#duplicate-check-btn {
+    position: absolute;
+    right: 70px; /* 입력란 오른쪽 여백 */
+    top: 66%; /* 입력란 높이의 50% 지점 */
+    transform: translateY(-50%); /* 세로 중앙 정렬 */
+    padding: 2px 8px; /* 버튼 내부 여백 */
+    font-size: 12px; /* 글자 크기 줄이기 */
+    height: 40%; /* 입력란 높이의 70% */
+    line-height: normal; /* 텍스트 줄 간격 조정 */
+    cursor: pointer;
+     border: 1px solid #fff; 
+    border-radius: 4px; /* 버튼 모서리 둥글게 */
+    background-color: #78A778;
+    color: #fff;
+    
+}
+/*회원가입 끝*/
+
+.container {
+	font-family: Arial, sans-serif;
+	width: 1080px;
+	margin: 0 auto;
+	line-height: 1.5;
+	box-sizing: border-box;
+	display:flex;
+}
+.sidebar {
+	width: 180px;	
+	box-sizing: border-box;
+	padding: 15px 2px;
+	font-weight: bold;
+	border : 1px solid black;
+	height: 100vh;
+	color: #fff;
+	background-color: #78A778;
+}
+
+.main {
+	flex: 1;
+  padding: 20px;
+}
