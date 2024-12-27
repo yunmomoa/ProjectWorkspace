@@ -12,8 +12,6 @@ import java.util.Properties;
 
 import com.semi.common.model.vo.Attachment;
 import static com.semi.common.template.JDBCTemplate.*;
-
-import com.semi.notice.model.dto.NoticeDTO;
 import com.semi.notice.model.vo.Notice;
 
 public class NoticeDao {
@@ -34,13 +32,13 @@ public class NoticeDao {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertNotice");
 		
+		// 여기 수정해야하나 한 번 더 확인하기
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,n.getNoticeTitle());
 			pstmt.setString(2, n.getNoticeContent());
 			pstmt.setInt(3, n.getNoticeLevel());
 			pstmt.setInt(4, n.getAdminNo());
-			pstmt.setString(5, n.getNoticeStatus());
 			
 			updateCount = pstmt.executeUpdate();
 			
@@ -104,48 +102,6 @@ public class NoticeDao {
 			close(pstmt);
 		}
 		return list;
-	}
-
-	public static NoticeDTO selectNotice(Connection conn, int noticeNo) {
-		NoticeDTO n = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("selectNotice");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1,noticeNo);
-			
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				n = NoticeDTO.builder()
-							.n(Notice.builder()
-									.noticeNo(noticeNo)
-									.noticeTitle(rset.getString("NOTICE_TITLE"))
-									.noticeContent(rset.getString("NOTICE_CONTENT"))
-									.createDate(rset.getDate("CREATE_DATE"))
-									.adminNo(rset.getInt("ADMIN_NO"))
-									.build())
-							.at(Attachment.builder()
-									.fileNo(rset.getInt("FILE_NO"))
-									.originName(rset.getString("ORIGIN_NAME"))
-									.changeName(rset.getString("CHANGE_NAME"))
-									.filePath(rset.getString("FILE_PATH"))
-									.build()
-							).build();
-							
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally{
-			close(rset);
-			close(pstmt);
-		}
-		return n;
-		
-	
 	}
 
 }

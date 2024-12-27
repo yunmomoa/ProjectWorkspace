@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import static com.semi.common.template.JDBCTemplate.*;
 
+import com.semi.common.model.vo.Attachment;
 import com.semi.member.model.dao.MemberDao;
 import com.semi.member.model.vo.Member;
 
@@ -20,4 +21,40 @@ public class MemberService {
 		
 		return m;
 	}
+
+	public int enroll(Member m, Attachment at) {
+		Connection conn = getConnection();
+		
+		int result = dao.enroll(conn, m);
+		
+		if(result > 0 && at != null) {
+			result = dao.insertImg(conn,at);
+		}
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
+	public int idCheck(String memberId) {
+		Connection conn = getConnection();
+		
+		int count = dao.idCheck(conn,memberId);
+		
+		close(conn);
+		
+		return count;
+
+	
+	}
+	
+	
+	
+	
+	
 }

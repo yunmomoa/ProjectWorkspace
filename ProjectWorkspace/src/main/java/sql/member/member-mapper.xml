@@ -8,4 +8,54 @@
     		AND MEMBER_PWD = ?
     		AND MEMBER_STATUS = 'Y'
 	</entry>
+	
+	<entry key="insert">
+		INSERT INTO MEMBER VALUES 
+		(SEQ_MNO.NEXTVAL,
+		 	? , <!-- 팀번호 -->
+		 	? , <!-- 아이디 -->
+		 	? , <!-- 이름 -->
+		 	? , <!-- 비밀번호 -->
+		 	? , <!-- 이메일 -->
+		 	? , <!-- 폰 -->
+		 	? , <!-- 닉네임 -->
+		 	? , <!-- 젠더 -->
+		 	? , <!-- 주민번호 -->
+		 	? , <!-- 생년월일 -->
+		 	DEFAULT , <!-- 가입일 -->
+		 	'', <!-- 마지막로그인 -->
+		 	DEFAULT <!-- 상태값 -->
+		 )
+	</entry>
+	
+	<entry key="insertImg">
+		INSERT INTO ATTACHMENT 
+		VALUES(SEQ_FNO.NEXTVAL,'',?,?,?,SYSDATE,DEFAULT,DEFAULT,'',SEQ_MNO.CURRVAL)
+	</entry>
+	
+	
+	
+	<entry key="idCheck">
+		SELECT COUNT(*) COUNT
+		FROM MEMBER
+		WHERE MEMBER_ID = ?
+			AND MEMBER_STATUS = 'Y'
+	</entry>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </properties>

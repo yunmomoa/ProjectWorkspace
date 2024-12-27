@@ -23,9 +23,11 @@ public class Member {
 	private String nickName;
 	private String gender;
 	private String ssn;
-	private String birth;
+	private int birth;
 	private Date createDate;
-	private String profileImg;
+	//private String profileImg;
 	private Date lastLoginDate;
 	private String memberStatus;
+	//private String fileNo;
+	//private int fileNo;
 }

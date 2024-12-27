@@ -44,14 +44,7 @@ public class NoticeService {
 	}
 
 	public NoticeDTO selectNotice(int noticeNo) {
-		Connection conn = getConnection();
-		
-		NoticeDTO n = NoticeDao.selectNotice(conn, noticeNo);
-		
-		close(conn);
-		
-		return n;
-	
+		// TODO Auto-generated method stub
+		return null;
 	}
-
 }

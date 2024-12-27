@@ -3,6 +3,7 @@
 <%
 	String contextPath = request.getContextPath();
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
  <style>
         /* 컨테이너 전체 너비 설정 */
         #container {
-            width: 1204px; /* 너비를 1204px로 고정 */
+            width: 900px; /* 너비를 1204px로 고정 */
             margin: 0 auto; /* 중앙 정렬 */
             border: 1px solid #ccc; /* 외곽선 */
             padding: 20px;
@@ -132,6 +133,17 @@
    				session.removeAttribute("errorMsg");
 	   		}
 		%>
+		
+		<%
+			String alertMsg = (String)session.getAttribute("alertMsg");
+		 		if(alertMsg != null) {
+		%>  		
+					alert('<%= alertMsg %>');
+		<%
+						session.removeAttribute("alertMsg");
+						}
+		%>
+		
    		}
    	</script>
 </head>
